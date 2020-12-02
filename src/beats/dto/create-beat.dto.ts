@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 
-export class CreateSongDto {
+export class CreateBeatDto {
 	@IsNotEmpty()
 	beatName: string;
 	@IsNotEmpty()
@@ -8,7 +8,7 @@ export class CreateSongDto {
 	@IsNotEmpty()
 	audioURL: string;
 	@IsNotEmpty()
-	price: string;
+	price: number;
 	@IsNotEmpty()
-	sold: string;
+	sold: boolean;
 }
