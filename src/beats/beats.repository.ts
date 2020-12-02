@@ -1,7 +1,9 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { BeatsEntity } from './beats.entity';
 import { CreateBeatDto } from './dto/create-beat.dto';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 @EntityRepository(BeatsEntity)
 export class BeatsRepository extends Repository<BeatsEntity> {
 	async createBeat(createBeatDto: CreateBeatDto): Promise<BeatsEntity>{
