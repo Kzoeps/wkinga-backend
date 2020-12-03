@@ -18,8 +18,8 @@ export class BeatsController {
 	@Post()
 	createSong(
 		@Body() createBeatDto: CreateBeatDto,
-	): void{
-		// return this.beatsService.createBeat(createBeatDto)
+	): Promise<BeatsEntity>{
+		return this.beatsService.createBeat(createBeatDto)
 	}
 
 	@Get(':id')

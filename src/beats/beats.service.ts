@@ -10,4 +10,7 @@ export class BeatsService {
 		@InjectRepository(BeatsRepository)
 		private beatsRepository: BeatsRepository,
 	) {}
+	createBeat(createBeatDto: CreateBeatDto): Promise<BeatsEntity>{
+		return this.beatsRepository.createBeat(createBeatDto);
+	}
 }
