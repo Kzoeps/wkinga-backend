@@ -1,5 +1,7 @@
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Post } from '@nestjs/common';
 import { BeatsService } from './beats.service';
+import { CreateBeatDto } from './dto/create-beat.dto';
+import { BeatsEntity } from './beats.entity';
 
 @Controller('beats')
 export class BeatsController {
@@ -14,8 +16,10 @@ export class BeatsController {
 	}
 
 	@Post()
-	createSong(): void{
-		console.log("Create Song here");
+	createSong(
+		@Body() createBeatDto: CreateBeatDto,
+	): Promise<BeatsEntity>{
+		return this.beatsService.createBeat(createBeatDto)
 	}
 
 	@Get(':id')
