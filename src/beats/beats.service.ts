@@ -15,8 +15,8 @@ export class BeatsService {
 		return this.beatsRepository.createBeat(createBeatDto);
 	}
 
-	updateBeat(updateBeatDto: UpdateBeatDto) {
-		this.beatsRepository.updateBeat(updateBeatDto);
+	updateBeat(id: number,updateBeatDto: UpdateBeatDto) {
+		this.beatsRepository.updateBeat(id,updateBeatDto);
 	}
 
 	getBeat(id: number): Promise<BeatsEntity> {

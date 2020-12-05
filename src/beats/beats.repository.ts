@@ -19,8 +19,13 @@ export class BeatsRepository extends Repository<BeatsEntity> {
 		return beat
 	}
 
-	updateBeat(updateBeatDto: UpdateBeatDto){
-		// for (const property in updateBeatDto){}
+	async updateBeat(id: number,updateBeatDto: UpdateBeatDto) {
+		// let beat = await this.findOne(id);
+		for (const property in updateBeatDto) {
+			if (updateBeatDto[property] !== 'undefined'){
+				console.log(property)
+			}
+		}
 	}
 
 	async getBeat(id: number): Promise<BeatsEntity>{

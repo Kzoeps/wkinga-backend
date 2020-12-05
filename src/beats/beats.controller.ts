@@ -31,7 +31,7 @@ export class BeatsController {
 	}
 
 	@Post()
-	@UsePipes(BeatValuesPipe, new ValidationPipe({ transform: true }))
+	@UsePipes( new ValidationPipe({ transformOptions: { enableImplicitConversion: true } }))
 	createSong(
 		@Body() createBeatDto: CreateBeatDto,
 	): Promise<BeatsEntity> {
@@ -47,11 +47,12 @@ export class BeatsController {
 	}
 
 	@Patch(':id')
-	@UsePipes(BeatValuesPipe, ValidationPipe)
-	updateSong(
+	@UsePipes(new ValidationPipe({ transformOptions: { enableImplicitConversion: true}}))
+	updateBeat(
+		@Param('id', ParseIntPipe) id: number,
 		@Body() updateBeatDto: UpdateBeatDto,
-	): void {
-		this.beatsService.updateBeat(updateBeatDto);
+	): void{
+		this.beatsService.updateBeat(id, updateBeatDto);
 	}
 
 	@Delete(':id')
