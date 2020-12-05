@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsBoolean, IsInt, IsNotEmpty } from 'class-validator';
 
 export class CreateBeatDto {
 	@IsNotEmpty()
@@ -8,7 +8,9 @@ export class CreateBeatDto {
 	@IsNotEmpty()
 	audioURL: string;
 	@IsNotEmpty()
+	@IsInt()
 	price: number;
 	@IsNotEmpty()
+	@IsBoolean()
 	sold: boolean;
 }
