@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { BeatsService } from './beats.service';
 import { CreateBeatDto } from './dto/create-beat.dto';
 import { BeatsEntity } from './beats.entity';
+import { BeatValuesPipe } from './pipes/beat-values-pipe';
 
 @Controller('beats')
 export class BeatsController {
@@ -16,9 +17,11 @@ export class BeatsController {
 	}
 
 	@Post()
+	@UsePipes(BeatValuesPipe,new ValidationPipe({ transform: true}))
 	createSong(
 		@Body() createBeatDto: CreateBeatDto,
 	): Promise<BeatsEntity>{
+		console.log(createBeatDto);
 		return this.beatsService.createBeat(createBeatDto)
 	}
 
