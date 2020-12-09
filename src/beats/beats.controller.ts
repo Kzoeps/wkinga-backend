@@ -17,6 +17,7 @@ import { BeatsEntity } from './beats.entity';
 // @ts-ignore
 import { BeatValuesPipe } from './pipes/beat-values-pipe';
 import { UpdateBeatDto } from './dto/update-beat.dto';
+import { SoldBoolPipe } from './pipes/sold-bool.pipe';
 
 @Controller('beats')
 export class BeatsController {
@@ -31,7 +32,7 @@ export class BeatsController {
 	}
 
 	@Post()
-	@UsePipes( new ValidationPipe({ transformOptions: { enableImplicitConversion: true } }))
+	@UsePipes(new ValidationPipe({ transformOptions: { enableImplicitConversion: true } }))
 	createSong(
 		@Body() createBeatDto: CreateBeatDto,
 	): Promise<BeatsEntity> {
@@ -41,18 +42,18 @@ export class BeatsController {
 
 	@Get(':id')
 	getSong(
-		@Param('id', ParseIntPipe) id: number
-	): Promise<BeatsEntity>{
-		return this.beatsService.getBeat(id)
+		@Param('id', ParseIntPipe) id: number,
+	): Promise<BeatsEntity> {
+		return this.beatsService.getBeat(id);
 	}
 
 	@Patch(':id')
-	@UsePipes(new ValidationPipe({ transformOptions: { enableImplicitConversion: true}}))
+	@UsePipes(new ValidationPipe({ transformOptions: { enableImplicitConversion: true } }))
 	updateBeat(
 		@Param('id', ParseIntPipe) id: number,
 		@Body() updateBeatDto: UpdateBeatDto,
-	): void{
-		this.beatsService.updateBeat(id, updateBeatDto);
+	): Promise<BeatsEntity>{
+		return this.beatsService.updateBeat(id, updateBeatDto);
 	}
 
 	@Delete(':id')
