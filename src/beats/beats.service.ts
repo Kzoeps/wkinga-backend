@@ -22,4 +22,8 @@ export class BeatsService {
 	getBeat(id: number): Promise<BeatsEntity> {
 		return this.beatsRepository.getBeat(id);
 	}
+
+	getAllBeats(): Promise<BeatsEntity[]>{
+		return this.beatsRepository.getAllBeat();
+	}
 }

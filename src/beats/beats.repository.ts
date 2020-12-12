@@ -37,4 +37,10 @@ export class BeatsRepository extends Repository<BeatsEntity> {
 		const beat = await this.findOne(id);
 		return beat;
 	}
+
+	async getAllBeat(): Promise<BeatsEntity[]>{
+		const query = this.createQueryBuilder('beats');
+		const beats =  await query.getMany();
+		return beats;
+	}
 }
