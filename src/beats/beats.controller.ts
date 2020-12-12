@@ -13,11 +13,7 @@ import {
 import { BeatsService } from './beats.service';
 import { CreateBeatDto } from './dto/create-beat.dto';
 import { BeatsEntity } from './beats.entity';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// import { BeatValuesPipe } from './pipes/beat-values-pipe';
 import { UpdateBeatDto } from './dto/update-beat.dto';
-// import { SoldBoolPipe } from './pipes/sold-bool.pipe';
 
 @Controller('beats')
 export class BeatsController {
@@ -27,7 +23,7 @@ export class BeatsController {
 	}
 
 	@Get()
-	getSongs():Promise<BeatsEntity[]>{
+	getSongs(): Promise<BeatsEntity[]> {
 		return this.beatsService.getAllBeats();
 	}
 
@@ -52,12 +48,12 @@ export class BeatsController {
 	updateBeat(
 		@Param('id', ParseIntPipe) id: number,
 		@Body() updateBeatDto: UpdateBeatDto,
-	): Promise<BeatsEntity>{
+	): Promise<BeatsEntity> {
 		return this.beatsService.updateBeat(id, updateBeatDto);
 	}
 
 	@Delete(':id')
-	deleteSong(@Param('id', ParseIntPipe) id:number): Promise<void>{
+	deleteSong(@Param('id', ParseIntPipe) id: number): Promise<void> {
 		return this.beatsService.deleteSong(id);
 	}
 }
