@@ -57,7 +57,7 @@ export class BeatsController {
 	}
 
 	@Delete(':id')
-	deleteSong(): void {
-		console.log('delete song here');
+	deleteSong(@Param('id', ParseIntPipe) id:number): Promise<void>{
+		return this.beatsService.deleteSong(id);
 	}
 }
