@@ -12,8 +12,20 @@ export class CreateBeatDto {
 
 	@IsNotEmpty()
 	@IsInt()
-	price: number;
-	
+	premiumLeasePrice: number;
+
+	@IsNotEmpty()
+	@IsInt()
+	trackoutLeasePrice: number;
+
+	@IsNotEmpty()
+	@IsInt()
+	unlimitedLeasePrice: number;
+
+	@IsNotEmpty()
+	@IsInt()
+	exclusivePrice: number;
+
 	@IsNotEmpty()
 	@IsBoolean()
 	sold: boolean;

@@ -1,4 +1,4 @@
-import { IsBoolean, IsInt, IsOptional } from 'class-validator';
+import { IsBoolean, IsInt, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class UpdateBeatDto {
 	@IsOptional()
@@ -12,8 +12,20 @@ export class UpdateBeatDto {
 
 	@IsOptional()
 	@IsInt()
-	price: number;
-	
+	premiumLeasePrice: number;
+
+	@IsOptional()
+	@IsInt()
+	trackoutLeasePrice: number;
+
+	@IsOptional()
+	@IsInt()
+	unlimitedLeasePrice: number;
+
+	@IsOptional()
+	@IsInt()
+	exclusivePrice: number;
+
 	@IsOptional()
 	@IsBoolean()
 	sold: boolean;

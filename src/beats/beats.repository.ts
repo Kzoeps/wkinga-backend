@@ -8,17 +8,18 @@ import { UpdateBeatDto } from './dto/update-beat.dto';
 @EntityRepository(BeatsEntity)
 export class BeatsRepository extends Repository<BeatsEntity> {
 	async createBeat(createBeatDto: CreateBeatDto): Promise<BeatsEntity> {
-		const { beatName, beatProducer, audioURL, price, sold } = createBeatDto;
-		const beat = new BeatsEntity();
-		beat.beatName = beatName;
-		beat.beatProducer = beatProducer;
-		beat.audioURL = audioURL;
-		beat.price = price;
-		beat.sold = sold;
+		let beat = new BeatsEntity();
+		beat = this.objectAssigner(createBeatDto, beat);
 		await beat.save();
 		return beat;
 	}
 
+	objectAssigner(beatDTO: CreateBeatDto, beatObj: BeatsEntity): BeatsEntity{
+		Object.keys(beatDTO).forEach((eachKey) => {
+			beatObj[eachKey] = beatDTO[eachKey];
+		})
+		return beatObj;
+	}
 	async updateBeat(id: number, updateBeatDto: UpdateBeatDto): Promise<BeatsEntity>{
 		const beat = await this.findOne(id);
 		for (const property in updateBeatDto) {
