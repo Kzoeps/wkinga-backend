@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateBeatDto } from './dto/create-beat.dto';
 import { BeatsEntity } from './beats.entity';
@@ -21,5 +21,17 @@ export class BeatsService {
 
 	getBeat(id: number): Promise<BeatsEntity> {
 		return this.beatsRepository.getBeat(id);
+	}
+
+	getAllBeats(): Promise<BeatsEntity[]>{
+		return this.beatsRepository.getAllBeat();
+	}
+
+	async deleteSong(id:number): Promise<void>{
+		const beat = await this.beatsRepository.delete(id);
+
+		if(beat.affected === 0){
+			throw new NotFoundException(`the beat of id: ${id} is not found`);
+		}
 	}
 }

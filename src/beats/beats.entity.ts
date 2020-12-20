@@ -15,7 +15,16 @@ export class BeatsEntity extends BaseEntity{
 	audioURL: string;
 
 	@Column()
-	price: number;
+	trackoutLeasePrice: number;
+
+	@Column()
+	premiumLeasePrice: number;
+
+	@Column()
+	unlimitedLeasePrice: number;
+
+	@Column()
+	exclusivePrice: number;
 
 	@Column()
 	sold: boolean;
