@@ -1,8 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity} from 'typeorm';
 import { BeatsEntity } from '../beats/beats.entity';
 
 @Entity()
 export class OrdersEntity extends BeatsEntity{
+	@Column()
+	journalID: string;
 
-
+	@Column()
+	chosenLicenseType: string;
 }

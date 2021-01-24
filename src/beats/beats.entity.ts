@@ -27,5 +27,8 @@ export class BeatsEntity extends BaseEntity{
 	exclusivePrice: number;
 
 	@Column()
+	beatDuration: number;
+
+	@Column()
 	sold: boolean;
 }

@@ -6,14 +6,18 @@ import { BeatsService } from './beats/beats.service';
 import { BeatsModule } from './beats/beats.module';
 import { BeatsRepository } from './beats/beats.repository';
 import { OrdersController } from './orders/orders.controller';
+import { OrdersModule } from './orders/orders.module';
+import { OrdersService } from './orders/orders.service';
+import { OrdersRepository } from './orders/orders.repository';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeOrmConfig),
     BeatsModule,
-		TypeOrmModule.forFeature([BeatsRepository])
+		TypeOrmModule.forFeature([BeatsRepository, OrdersRepository]),
+		OrdersModule
   ],
   controllers: [BeatsController, OrdersController],
-  providers: [BeatsService],
+  providers: [BeatsService, OrdersService],
 })
 export class AppModule {}
