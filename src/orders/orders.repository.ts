@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
 import { OrdersEntity } from './orders.entity';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -28,5 +28,12 @@ export class OrdersRepository extends Repository<OrdersEntity> {
 			}
 		})
 		return orderObj;
+	}
+
+	async deleteOrder(id: number): Promise<void> {
+		const orders = await this.delete(id);
+		if (orders.affected === 0) {
+			throw new NotFoundException(`the beat of id: ${id} was not found`);
+		}
 	}
 }

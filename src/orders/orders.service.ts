@@ -19,4 +19,8 @@ export class OrdersService {
 	createOrder(createOrderDto: CreateOrderDto): Promise<OrdersEntity> {
 		return this.ordersRepository.createOrder(createOrderDto);
 	}
+
+	deleteOrder(id: number) {
+		return this.ordersRepository.deleteOrder(id);
+	}
 }

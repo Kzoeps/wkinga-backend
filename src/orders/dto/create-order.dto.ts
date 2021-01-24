@@ -3,8 +3,8 @@ import { CreateBeatDto } from '../../beats/dto/create-beat.dto';
 
 export class CreateOrderDto extends CreateBeatDto{
 	@IsNotEmpty()
-	// @IsNumber()
-	journalID: string;
+	@IsNumber()
+	journalID: number;
 
 	@IsNotEmpty()
 	@IsString()
