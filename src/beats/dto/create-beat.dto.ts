@@ -15,7 +15,7 @@ export class CreateBeatDto {
 
 	@IsNotEmpty()
 	@IsString()
-	imgURL: string
+	imgURL: string;
 
 	@IsNotEmpty()
 	@IsInt()

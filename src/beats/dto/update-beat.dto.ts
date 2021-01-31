@@ -11,6 +11,8 @@ export class UpdateBeatDto {
 	audioURL: string;
 
 	@IsOptional()
+	imageURL: string
+	@IsOptional()
 	@IsInt()
 	premiumLeasePrice: number;
 
