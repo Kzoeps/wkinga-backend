@@ -34,6 +34,10 @@ export class CreateBeatDto {
 	exclusivePrice: number;
 
 	@IsNotEmpty()
+	@IsInt()
+	beatDuration: number;
+
+	@IsNotEmpty()
 	@IsBoolean()
 	sold: boolean;
 }

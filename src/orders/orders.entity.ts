@@ -7,5 +7,8 @@ export class OrdersEntity extends BeatsEntity{
 	journalID: string;
 
 	@Column()
+	emailID: string;
+
+	@Column()
 	chosenLicenseType: string;
 }
